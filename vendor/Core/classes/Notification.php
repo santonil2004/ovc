@@ -56,9 +56,9 @@ class Notification {
                 break;
         }
         $html = '<div class="' . $class . ' notification-message">';
-        $html.='<span style="float:left" class="notificaion-hide"><img src="images/' . $type . '.png"></span>';
+        $html.='<span style="float:left" class="notificaion-hide"><img src="assets/images/' . $type . '.png"></span>';
         $html.='<strong style="padding:0px 12px;">' . $msg . '</strong>';
-        $html.='<span style="float:right" class="notificaion-hide"><img src="images/close.png"></span>';
+        $html.='<span style="float:right" class="notificaion-hide"><img src="assets/images/close.png"></span>';
         $html.='</div>';
 
         return $html;
