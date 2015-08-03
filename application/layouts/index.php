@@ -21,9 +21,6 @@
         <!-- Custom CSS -->
         <link href="assets/dist/css/sb-admin-2.css" rel="stylesheet">
 
-        <!-- Morris Charts CSS -->
-        <link href="assets/bower_components/morrisjs/morris.css" rel="stylesheet">
-
         <!-- Custom Fonts -->
         <link href="assets/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
@@ -47,8 +44,10 @@
             </nav>
 
             <div id="page-wrapper">
-                <?php Notification::getMessage(); ?>
+
                 <div class="row">
+                    <?php Notification::getMessage(); ?>
+
                     <div class="col-lg-12">
                         <?php $this->getContent(); ?>
                     </div>

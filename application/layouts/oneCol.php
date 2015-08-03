@@ -36,6 +36,7 @@
 
         <div class="container">
             <div class="row">
+                <?php Notification::getMessage(); ?>
                 <?php $this->getContent(); ?>
             </div>
         </div>

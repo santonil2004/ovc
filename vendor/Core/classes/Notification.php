@@ -42,22 +42,22 @@ class Notification {
 
         switch ($type) {
             case self::TYPE_ERROR;
-                $class = 'notification-error';
+                $class = 'alert-danger';
                 break;
             case self::TYPE_SUCCESS;
-                $class = 'notification-success';
+                $class = 'alert-success';
                 break;
             case self::TYPE_WARNING;
-                $class = 'notification-warning';
+                $class = 'alert-warning';
                 break;
             default:
-                $class = 'notification-error';
+                $class = 'alert-info';
                 $type = 'error';
                 break;
         }
-        $html = '<div class="' . $class . ' notification-message">';
+        $html = '<div class="alert ' . $class . '">';
         $html.='<span style="float:left" class="notificaion-hide"><img src="assets/images/' . $type . '.png"></span>';
-        $html.='<strong style="padding:0px 12px;">' . $msg . '</strong>';
+        $html.='<strong style="padding:0px 10px;">' . $msg . '</strong>';
         $html.='<span style="float:right" class="notificaion-hide"><img src="assets/images/close.png"></span>';
         $html.='</div>';
 

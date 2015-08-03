@@ -12,9 +12,26 @@ class loginController extends BaseController {
     }
 
     public function dologinAction() {
-        session::set('user', ['sanil']);
-        Notification::setMessage("WelCome Back !");
-        $this->redirect(Request::createUrl('index', 'index'));
+
+        $val = new validation;
+        $val->addSource($_POST)->addRule('email', 'email', true, 1, 255, true)
+                ->addRule('password', 'string', true, 10, 150, false);
+        $val->run();
+
+        if (count($val->errors)) {
+
+            Debug::r($val->errors);
+
+            foreach ($val->errors as $error) {
+                Notification::setMessage($error, Notification::TYPE_ERROR);
+            }
+            $this->redirect(Request::createUrl('login', 'login'));
+        } else {
+            Notification::setMessage("Welcome back !", Notification::TYPE_SUCCESS);
+            Debug::r($val->sanitized);
+            session::set('user', ['sanil']);
+            $this->redirect(Request::createUrl('index', 'index'));
+        }
     }
 
     public function logoutAction() {
