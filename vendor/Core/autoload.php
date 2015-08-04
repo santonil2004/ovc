@@ -15,6 +15,7 @@ require_once __DIR__ . '/core-config.php';
  * load red beans ORM
  */
 include VENDOR_BASE_PATH . DS . 'RedBean/rb.php';
+//include VENDOR_BASE_PATH . DS . 'RedBean/RedBeanFVM.php';
 
 /**
  * Include all php files from classes
@@ -37,4 +38,14 @@ function loadAppClass($className) {
     }
 }
 
-//spl_autoload_register('loadAppClass');
+spl_autoload_register('loadAppClass');
+
+
+// connect database
+if (defined(DB_HOST) && defined(DB_NAME) && defined(DB_USER) && defined(DB_PASSWORD)) {
+    R::setup('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME, DB_USER, DB_PASSWORD);
+    //R::freeze(TRUE);
+}
+
+
+

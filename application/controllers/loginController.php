@@ -13,6 +13,24 @@ class loginController extends BaseController {
 
     public function dologinAction() {
 
+        Db::connect();
+        $bean = R::dispense('user'); // the redbean model
+
+        $required = [
+            'Name' => 'name', // post key + rule(s)
+            'Email' => 'email',
+            'User_Name' => ['rmnl', 'az_lower'],
+            'Password' => 'password_hash',
+        ];
+
+        \RedBeanFVM\RedBeanFVM::registerAutoloader(); // for future use
+        $fvm = \RedBeanFVM\RedBeanFVM::getInstance();
+
+        $fvm->generate_model($bean, $required); //the magic
+
+        R::store($bean);
+
+
         $val = new validation;
         $val->addSource($_POST)->addRule('email', 'email', true, 1, 255, true)
                 ->addRule('password', 'string', true, 10, 150, false);
